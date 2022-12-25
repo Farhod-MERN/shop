@@ -1,7 +1,9 @@
 import { BasketItem } from "./BasketItem"
+import { useContext } from "react"
+import { ShopContext } from "../context"
 
-const BasketList = ({order, handleisShow, removeFromBasket, handleBackShow = Function.prototype, decrementQuantity, incrementQuantity})=>{
-
+const BasketList = ()=>{
+    const {order = [], handleBackShow = Function.prototype, handleisShow} = useContext(ShopContext)
     const totalPrice = order.reduce((sum, element) =>{
         return sum + element.price * element.quantity
     }, 0) 
@@ -14,7 +16,7 @@ return(
     {
         order.length ? order.map(item =>{
             return (
-                <BasketItem decrementQuantity = {decrementQuantity} incrementQuantity ={incrementQuantity} removeFromBasket = {removeFromBasket} key = {item.id} {...item}/>
+                <BasketItem key = {item.id} {...item}/>
             )
         } ) : <li className="collection-item"><img className="empty-basket" src="https://i.pinimg.com/564x/2e/ac/fa/2eacfa305d7715bdcd86bb4956209038.jpg" alt="Basket is empty 😔"/></li>
     }

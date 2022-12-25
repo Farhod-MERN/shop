@@ -1,9 +1,10 @@
 import { GoodItem } from "./GoodItem"
 import { Nothing } from "./Nothing"
-
-const GoodList = (props)=>{
+import { ShopContext } from "../context"
+import { useContext } from "react"
+const GoodList = ()=>{
     
-    const {goods = [], addtoBacket} = props  
+    const {goods = []} = useContext(ShopContext)  
 
     if(!goods.length){
         return <Nothing />
@@ -11,7 +12,7 @@ const GoodList = (props)=>{
     return(
         <div className="goods">
             {goods.map((item) => {
-                return <GoodItem key = {item.id} {...item} addtoBacket = {addtoBacket}/>
+                return <GoodItem key = {item.id} {...item}/>
             })}
         </div>
     )

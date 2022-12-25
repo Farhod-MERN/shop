@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { ShopContext } from "../context";
+
 const GoodItem = (props) => {
-  const { id, name, description, price, full_background, addtoBacket } = props;
- 
+  const { id, name, description, price, full_background} = props;
+  const {addtoBacket} = useContext(ShopContext)
   return (
     <div className="card" id={id}>
       <div className="card-image">

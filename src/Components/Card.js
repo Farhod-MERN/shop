@@ -1,6 +1,10 @@
-const Card = (props)=>{
-    const {quantity = 0, handleisShow = Function.prototype } = props
-    //Function.prototype = biz propsdan olgan narsamiz funksiya ekanligini aytib qo'ydik
+import { useContext } from "react"
+import { ShopContext } from "../context"
+
+const Card = ()=>{
+
+    const {order ,handleisShow } = useContext(ShopContext)
+    const quantity = order.length
     return(
         <div className = "card-shop  white-text" onClick={handleisShow}>
             <i className="material-icons">add_shopping_cart</i>
